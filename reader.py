@@ -1,3 +1,4 @@
+#Importing all required modules
 import pygame
 import tkinter as tk
 import os
@@ -8,6 +9,7 @@ player.title("MP3 Player")
 player.geometry("205x340")
 
 #Playlist:
+#This code was sourced and edit to fit this script. All playlist code credit goes to rightful owner.
 os.chdir("Songs")
 songList = os.listdir()
 playlist = tk.Listbox(player, highlightcolor="blue", selectmode=tk.SINGLE)
