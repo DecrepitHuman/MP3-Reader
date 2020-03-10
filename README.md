@@ -2,7 +2,7 @@
 This is a simple MP3-Reader directed towards source-code
 
 # Basics
-To get started run the start.bat file to execute the script. Once executed, select disered song and the click play. The volume control dial will only refresh if "PLAY" or "RESUME" button clicked. Songs will have to be placed in a file named "Songs" to function correctly
+To get started run the start.bat file to execute the script. Once executed, select disered song and the click play. The volume control dial will only refresh if "PLAY" or "RESUME" button clicked. Songs will have to be placed in a file named "Songs" to be added to the queue
 
 # Setup
 To run this python mp3-player you have to do the following:
