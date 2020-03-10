@@ -1,4 +1,3 @@
-#Importing all required modules
 import pygame
 import tkinter as tk
 import os
@@ -9,7 +8,6 @@ player.title("MP3 Player")
 player.geometry("205x340")
 
 #Playlist:
-#This code was sourced and edit to fit this script. All playlist code credit goes to rightful owner.
 os.chdir("Songs")
 songList = os.listdir()
 playlist = tk.Listbox(player, highlightcolor="blue", selectmode=tk.SINGLE)
@@ -31,6 +29,12 @@ def Play():
     
 def ExitPlayer():
     pygame.mixer.music.stop()
+    
+def Pause():
+    pygame.mixer.music.pause()
+
+def Resume():
+    pygame.mixer.music.unpause()
 
 #Buttons:
 Button1 = tk.Button(player, width=8, height=5, text="PLAY", command=Play)
@@ -38,6 +42,12 @@ Button1.pack(fill="x")
 
 Button2 = tk.Button(player, width=8, height=5, text="STOP", command=ExitPlayer)
 Button2.pack(fill="x")
+
+Button3 = tk.Button(player, width=8, height=5, text="PAUSE", command=Pause)
+Button3.pack(fill="x")
+
+Button4 = tk.Button(player, width=8, height=5, text="RESUME", command=Resume)
+Button4.pack(fill="x")
 
 #More Playlist code:
 var = tk.StringVar()
