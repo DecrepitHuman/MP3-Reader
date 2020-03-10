@@ -5,11 +5,19 @@ import os
 #Creating & Editing window:
 player = tk.Tk()
 player.title("MP3 Player")
-player.geometry("205x340")
+player.geometry("300x500")
 
 #Playlist:
+#Playlist has been sourced from another creator, it is NOT my code. All credit goes to creator
 os.chdir("Songs")
 songList = os.listdir()
+
+#Volume Control
+#Volume control has been sourced from another creator, it is NOT my code. All credit goes to creator
+VolumeLevel = tk.Scale(player, from_=0.0,to_=1.0,
+                        orient=tk.HORIZONTAL, resolution=0.1)
+VolumeLevel.pack()
+
 playlist = tk.Listbox(player, highlightcolor="blue", selectmode=tk.SINGLE)
 print(songList)
 for item in songList:
@@ -26,6 +34,7 @@ def Play():
     pygame.mixer.music.load(playlist.get(tk.ACTIVE))
     var.set(playlist.get(tk.ACTIVE))
     pygame.mixer.music.play()
+    pygame.mixer.music.set_volume(VolumeLevel.get())
     
 def ExitPlayer():
     pygame.mixer.music.stop()
@@ -35,6 +44,7 @@ def Pause():
 
 def Resume():
     pygame.mixer.music.unpause()
+    pygame.mixer.music.set_volume(VolumeLevel.get())
 
 #Buttons:
 Button1 = tk.Button(player, width=8, height=5, text="PLAY", command=Play)
@@ -52,7 +62,7 @@ Button4.pack(fill="x")
 #More Playlist code:
 var = tk.StringVar()
 songTitle = tk.Label(player, textvariable=var)
-songTitle.pack()
+songTitle.pack(fill="both")
 playlist.pack(fill="both", expand="yes")
 
 #Starting window
