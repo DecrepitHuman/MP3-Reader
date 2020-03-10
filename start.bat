@@ -1,0 +1,2 @@
+python reader.py
+pause
