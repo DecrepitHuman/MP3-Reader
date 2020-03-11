@@ -11,4 +11,4 @@ To run this python mp3-player you have to do the following:
 3. Run the batch file provided to activate the script
 
 # Know Issues
-1. Convert python file to executable (.exe) throws out errors on launch
+1. Converting python file to executable (.exe) throws out errors on launch
