@@ -5,7 +5,7 @@ import os
 #Creating & Editing window:
 player = tk.Tk()
 player.title("MP3 Player")
-player.geometry("300x500")
+player.geometry("300x550")
 
 #Playlist:
 #Playlist has been sourced from another creator, it is NOT my code. All credit goes to creator
@@ -45,6 +45,18 @@ def Pause():
 def Resume():
     pygame.mixer.music.unpause()
     pygame.mixer.music.set_volume(VolumeLevel.get())
+    
+def Website():
+    try:
+        songNameWebsite = str(playlist.get(tk.ACTIVE))
+        newSongNameWebsite = songNameWebsite.replace(" ", "+")
+        os.system("start https://www.youtube.com/results?search_query=" + newSongNameWebsite)
+    except IOError:
+        print("IOError reached")
+    else:
+        os.system("cls")
+        print("Error, song reached char limit. Please shorten name.",
+              "If this error was mistaken, please ignore.")
 
 #Buttons:
 Button1 = tk.Button(player, width=8, height=5, text="PLAY", command=Play)
@@ -59,11 +71,14 @@ Button3.pack(fill="x")
 Button4 = tk.Button(player, width=8, height=5, text="RESUME", command=Resume)
 Button4.pack(fill="x")
 
+Button5 = tk.Button(player, width=8, height=5, text="GOOGLE", command=Website)
+Button5.pack(fill="x")
+
 #More Playlist code:
 var = tk.StringVar()
 songTitle = tk.Label(player, textvariable=var)
 songTitle.pack(fill="both")
 playlist.pack(fill="both", expand="yes")
 
-#Starting window
+#Starting application
 player.mainloop()
