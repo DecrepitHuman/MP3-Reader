@@ -5,7 +5,7 @@ import os
 #Creating & Editing window:
 player = tk.Tk()
 player.title("MP3 Player")
-player.geometry("300x550")
+player.geometry("300x700")
 
 #Playlist:
 #Playlist has been sourced from another creator, it is NOT my code. All credit goes to creator
@@ -35,17 +35,44 @@ def Play():
     var.set(playlist.get(tk.ACTIVE))
     pygame.mixer.music.play()
     pygame.mixer.music.set_volume(VolumeLevel.get())
-    
+
 def ExitPlayer():
     pygame.mixer.music.stop()
-    
+
 def Pause():
     pygame.mixer.music.pause()
 
 def Resume():
     pygame.mixer.music.unpause()
     pygame.mixer.music.set_volume(VolumeLevel.get())
-    
+
+def OpenMixer():
+    #Creating & Editing window:
+    OpenMixer = tk.Tk()
+    OpenMixer.title("MP3: Mixer settings")
+    OpenMixer.geometry("300x300")
+
+    def createPlaylist():
+        PlayListLoader = tk.Tk()
+        PlayListLoader.title("Enter Playlist Name")
+        PlayListLoader.geometry("300x300")
+
+        def createNow():
+            os.mkdir(str(e1.get()))
+
+        e1 = tk.Entry(PlayListLoader)
+        e1.pack(fill="x")
+
+        tk.Button(PlayListLoader, text="Submit", command=createNow).pack()
+
+        PlayListLoader.mainloop()
+        ###END OF PLAYLIST###
+
+    editPlaylist =  tk.Button(OpenMixer, text="Create Playlist", command=createPlaylist)
+    editPlaylist.pack(fill="x")
+
+    OpenMixer.mainloop()
+
 def Website():
     try:
         songNameWebsite = str(playlist.get(tk.ACTIVE))
@@ -73,6 +100,9 @@ Button4.pack(fill="x")
 
 Button5 = tk.Button(player, width=8, height=5, text="GOOGLE", command=Website)
 Button5.pack(fill="x")
+
+Button6 = tk.Button(player, width=14, height=8, text="OTHER SETTINGS", command=OpenMixer)
+Button6.pack()
 
 #More Playlist code:
 var = tk.StringVar()
